@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.util.Arrays;
 
 /* 
 DownloadException
@@ -21,11 +22,26 @@ Requirements:
 5. Поток FileInputStream должен быть закрыт.*/
 
 public class Solution {
-    public static void main(String[] args) throws DownloadException {
+    public static void main(String[] args) throws DownloadException, IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+
+        while (true){
+            FileInputStream file = new FileInputStream(reader.readLine());
+            byte[] bytes = file.readAllBytes();
+            int sum = 0;
+            for (byte b: bytes){
+                sum += b;
+            }
+            if (sum < 1000) {
+                throw new DownloadException();
+            }
+        }
 
     }
 
     public static class DownloadException extends Exception {
-
+        public DownloadException() {
+            super("DownloadException");
+        }
     }
 }

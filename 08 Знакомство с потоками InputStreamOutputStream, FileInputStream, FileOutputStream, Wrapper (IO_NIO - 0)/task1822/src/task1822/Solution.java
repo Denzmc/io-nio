@@ -1,14 +1,13 @@
 package task1822;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
-import java.io.InputStreamReader;
+import java.io.*;
+
 
 /* 
 Поиск данных внутри файла
 Считать с консоли имя файла.
-Найти в файле информацию, которая относится к заданному id, и вывести ее на экран в виде, в котором она записана в файле.
+Найти в файле информацию, которая относится к заданному id,
+и вывести ее на экран в виде, в котором она записана в файле.
 Программа запускается с одним параметром: id (int).
 Закрыть потоки.
 
@@ -37,6 +36,24 @@ Requirements:
 4. Поток для чтения из файла должен быть закрыт.*/
 
 public class Solution {
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        File file = new File(reader.readLine());
+        FileReader fr = new FileReader(file);
+        BufferedReader fileReader = new BufferedReader(fr);
+
+        String line = fileReader.readLine();
+        while (line != null) {
+            String[] strings = line.split(" ");
+            if (strings[0].equals(args[0])){
+                System.out.println(line);
+                break;
+            }
+
+            line = fileReader.readLine();
+        }
+
+
+
     }
 }

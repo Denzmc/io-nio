@@ -3,6 +3,7 @@ package task1805;
 import java.io.BufferedReader;
 import java.io.FileInputStream;
 import java.io.InputStreamReader;
+import java.util.HashSet;
 import java.util.Set;
 import java.util.TreeSet;
 
@@ -30,5 +31,17 @@ Requirements:
 
 public class Solution {
     public static void main(String[] args) throws Exception {
+        BufferedReader reader = new BufferedReader(new InputStreamReader(System.in));
+        FileInputStream file = new FileInputStream(reader.readLine());
+        Set<Integer> set = new HashSet<>();
+        while (file.available()>0)
+        {
+            int data = file.read();
+            set.add(data);
+        }
+
+        set.forEach(a -> System.out.print(a+" "));
+        file.close();
+
     }
 }
